@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+BUILD_DIR="$1"
+CACHE_DIR="$2"
+ENV_DIR="$3"
+
+PROFILE_PATH="$BUILD_DIR/.profile.d/git-tag.sh"
+
+test() {
+    echo "========== GIT_DIR ($GIT_DIR) ========="
+}
+
+create_env() {
+  mkdir -p $(dirname $PROFILE_PATH)
+}
+
+write_profile() {
+  echo "=====> Writing GIT_TAG ($GIT_TAG) to $PROFILE_PATH"
+  echo "export GIT_TAG=\"$GIT_TAG\"" >> $PROFILE_PATH
+}
+
+
+test
+
+exit 0
