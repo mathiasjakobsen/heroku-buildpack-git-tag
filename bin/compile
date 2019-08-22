@@ -22,7 +22,7 @@ RESPONSE=$(curl -H "Authorization: token $GITHUB_TOKEN" -s "https://api.github.c
 echo "===============> Github Response:"
 echo $RESPONSE
 
-GIT_TAG=$(echo $RESPONSE | | python -c 'import json,sys;o=json.load(sys.stdin);print o[0]["name"];')
+GIT_TAG=$(echo $RESPONSE | python -c 'import json,sys;o=json.load(sys.stdin);print o[0]["name"];')
 
 echo "===============> Writing GIT_TAG ($GIT_TAG) to $PROFILE_PATH"
 echo "export GIT_TAG=\"$GIT_TAG\"" >> $PROFILE_PATH
